@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>
+        Fibonacci
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <script>
+        function fibonacci() {
+            var n = parseInt(document.getElementById("n").value);
+            if (n < 3) return 1;
+            let a = 1;
+            let b = 1;
+            for (i = 2; i < n; i++) {
+                const next = a + b;
+                a = b;
+                b = next;
+            }
+            return b;
+        }
+        function cetak() { //seperti void di Java
+            document.getElementById("hasil").innerHTML = fibonacci();
+        }
+    </script>
+</head>
+
+<body style="background-image:url(download.jpg);">
+    <div class="container">
+        <div class="jumbotron m-auto mt-lg-5 w-50 p-lg-5 h-75" style="background-color:antiquewhite;">
+
+            <h1 class="text-center">Perhitungan Bilangan Fibonacci</h1>
+            <div class="form-group">
+                <label for="n">Silakan Masukkan angka disini : </label>
+                <input type="number" class="form-control" id="n" name="n" placeholder="bilangan"
+                    style="background-color:aliceblue;">
+                <button class="btn btn-success" onclick="cetak();" style="margin-top: 0.5cm;">HITUNG</button>
+
+            </div>
+            <h5>Hasil Bilangan Fibonacci : <div id="hasil"></div>
+
+            </h5>
+        </div>
+    </div>
+</body>
+
+</html>

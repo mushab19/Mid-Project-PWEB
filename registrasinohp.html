@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>
+        PENDAFTARAN NO HP
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <script>
+        function validasi() {
+            //membaca isi no hp
+            var nohp = document.getElementById("nohp").value;
+            var email = document.getElementById("email").value;
+            const emailsplit = email.split("@");
+
+            //Eror No HP
+            if (nohp.length == 0) {
+                document.getElementById("errmessage").innerHTML = "*No HP Harus Diisi";
+                return false;
+            } else if (isNaN(nohp) == true) {
+                document.getElementById("errmessage").innerHTML = "*No HP Harus Angka";
+                return false;
+            } else if (nohp.startsWith("0", 0) == false) {
+                document.getElementById("errmessage").innerHTML = "*No HP Harus dimulai dengan 0";
+                return false;
+            }
+
+            //Eror Email
+            if (email.length == 0) {
+                document.getElementById("errmessage").innerHTML = "*Email Harus Diisi";
+                return false;
+            } else if (email.includes("@") == false) {
+                document.getElementById("errmessage").innerHTML = "*Email tidak valid";
+                return false;
+            } else if (email.includes(".") == false) {
+                document.getElementById("errmessage").innerHTML = "*Email tidak valid";
+                return false;
+            } else if (email.includes("com") == false) {
+                document.getElementById("errmessage").innerHTML = "*Email tidak valid";
+                return false;
+            } else if (emailsplit[0].length < 8) {
+                document.getElementById("errmessage").innerHTML = "*Minimal 8 Karakter";
+                return false;
+            }
+            //default value dari return di onsubmit adalah true
+            //dalam 1 function, bisa sudah menemui 1 return, bawahnya tidak
+            //akan dijalankan
+        }
+    </script>
+</head>
+
+<body style="background-image:url(download.jpg);">
+    <div class="container">
+        <div class="jumbotron m-auto mt-lg-5 w-50 p-lg-5 h-75">
+
+            <H2>REGISTRASI MANDIRI NO HP</H2>
+            <form method="get" action="https://www.google.com/" onsubmit="return validasi();">
+                <div class="form-group">
+                    <label for="nohp">NO HANDPHONE</label>
+                    <input type="text" id="nohp" name="nohp" placeholder="Masukkan No HP" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+                    <input type="text" id="email" name="email" placeholder="Masukkan Email" class="form-control">
+                </div>
+                <input type="submit" class="btn btn-success" value="SIMPAN">
+                <div class="alert text-danger">
+                    <div id="errmessage"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
